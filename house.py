@@ -1,6 +1,8 @@
 import pygame
 
-def draw_picture(screen, x, y, weidth, height):
+pygame.init()
+
+def draw_picture(screen, x, y, width, height):
 	"""
 	Рисует картинку с домиком на фоне травы и неба.
 
@@ -10,14 +12,30 @@ def draw_picture(screen, x, y, weidth, height):
 	:param weidth: ширина прямоугольника
 	:param height: высота прямоугольника
 	"""
-	print("as if I were drawing a picture", x, y, weidth, height)
+	
+	draw_background(screen, x, y, width, height)
+	house_x = x + width // 2
+	house_y = y + 3 * height // 4  
+	house_height = min(height, width) * 2 // 3
+	house_width = int(house_height * 1.5)  
+	draw_house(screen, house_x, house_y, house_width, house_height)
+	sun_radius = min(width, height) // 10  
+	draw_sun(screen, x, y, sun_radius)
 
-pygame.init()
-weidth, height = screen_size = (600, 400)
+def draw_background(screen, x, y, width, height):
+	print('Типа рисую фон:', x, y, width, height)
+
+def draw_house(screen, x, y, width, height):
+	print('Типа рисую домик:', x, y, width, height)
+
+def draw_sun(screen, x, y, radius):
+	print('Типа рисую солнце:', x, y, radius)
+
+width, height = screen_size = (600, 400)
 screen = pygame.display.set_mode(screen_size)
 
 # Здесь нужно рисовать
-draw_picture(screen, 0, 0, weidth, height)
+draw_picture(screen, 0, 0, width, height)
 
 
 pygame.display.update()
